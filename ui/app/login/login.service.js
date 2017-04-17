@@ -9,13 +9,11 @@
   function LoginService($http, $uibModal, $q, $rootScope, $state,
     $stateParams, messageBoardService) {
 
-    var service = {};
     var _loginMode = 'full'; // 'modal', 'top-right', or 'full'
     var _loginError;
     var _toStateName;
     var _toStateParams;
     var _isAuthenticated;
-    var _userPrefix = '';
     var _protectedRoutes = [];
     var deregisterLoginSuccess;
 
@@ -27,7 +25,7 @@
     }
 
     function failLogin(response) {
-      if (response.status > 200) {
+      if (response.status === 401) {
         _loginError = true;
       }
     }
@@ -37,47 +35,32 @@
     }
 
     function getAuthenticatedStatus() {
-      if (_isAuthenticated !== undefined) {
-        return $q.resolve(_isAuthenticated);
+      if (_isAuthenticated) {
+        return _isAuthenticated;
       }
 
       return $http.get('/api/user/status', {}).then(function(response) {
         if (response.data.authenticated === false) {
           _isAuthenticated = false;
-          if (response.data.appUsersOnly) {
-            _userPrefix = response.data.appName + '-';
-          }
         }
         else
         {
           loginSuccess(response);
         }
-        return service.isAuthenticated();
+        return isAuthenticated();
       });
     }
 
     function loginSuccess(response) {
       _loginError = null;
       _isAuthenticated = true;
-      if (response.data.appUsersOnly) {
-        _userPrefix = response.data.appName + '-';
-      }
       $rootScope.$broadcast('loginService:login-success', response.data);
     }
 
     function login(username, password) {
       return $http.post('/api/user/login', {
-        'username': _userPrefix + username,
+        'username': username,
         'password': password
-      }).then(function(response) {
-        loginSuccess(response);
-        return response;
-      }, failLogin);
-    }
-
-    function switchLogin(username) {
-      return $http.post('/api/user/switch', {
-        'username': username
       }).then(function(response) {
         loginSuccess(response);
         return response;
@@ -120,8 +103,6 @@
             'params': JSON.stringify((_toStateParams || $stateParams))
           }).then(function() {
             d.reject();
-          }, function(error) {
-            throw error;
           });
       }
       return d.promise;
@@ -154,7 +135,7 @@
 
     function blockRoute(event, next, nextParams) {
       event.preventDefault();
-      service.loginPrompt();
+      loginPrompt();
       if (_loginMode !== 'full') {
         if (deregisterLoginSuccess) {
           deregisterLoginSuccess();
@@ -175,33 +156,34 @@
       }
 
       if (routeIsProtected(next.name)) {
-        service.getAuthenticatedStatus().then(function() {
-          if (!service.isAuthenticated()) {
-            //this does NOT block requests in a timely fashion...
+        var auth = getAuthenticatedStatus();
+
+        if (angular.isFunction(auth.then)) {
+          auth.then(function() {
+            if (!isAuthenticated()) {
+              //this does NOT block requests in a timely fashion...
+              blockRoute(event, next, nextParams);
+            }
+          });
+        }
+        else {
+          if (!auth) {
             blockRoute(event, next, nextParams);
           }
-        });
+        }
 
       }
     });
 
-    $rootScope.$on('loginService:profile-changed', function() {
-      _isAuthenticated = undefined;
-      service.getAuthenticatedStatus();
-    });
-
-    angular.extend(service, {
+    return {
       login: login,
       logout: logout,
-      switch: switchLogin,
       loginPrompt: loginPrompt,
       loginError: loginError,
       loginMode: loginMode,
       isAuthenticated: isAuthenticated,
       getAuthenticatedStatus: getAuthenticatedStatus,
       protectedRoutes: protectedRoutes
-    });
-
-    return service;
+    };
   }
 }());

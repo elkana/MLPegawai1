@@ -136,7 +136,7 @@
     </range>
   </constraint>
   
-  <constraint name="KATEGORI PANGKAT">
+  <constraint name="KATEGORI_PANGKAT">
     <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
       <facet-option>limit=10</facet-option>
       <facet-option>frequency-order</facet-option>
@@ -145,7 +145,7 @@
     </range>
   </constraint>  
   
-  <constraint name="ESELON JABATAN">
+  <constraint name="ESELON_JABATAN">
     <range type="xs:string" facet="true" collation="http://marklogic.com/collation/codepoint">
       <facet-option>limit=10</facet-option>
       <facet-option>frequency-order</facet-option>

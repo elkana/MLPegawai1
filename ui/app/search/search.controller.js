@@ -5,22 +5,29 @@
   angular.module('app.search')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$scope', '$location', 'MLSearchFactory'];
+  SearchCtrl.$inject = ['$scope', '$location', 'userService', 'MLSearchFactory'];
 
   // inherit from MLSearchController
   var superCtrl = MLSearchController.prototype;
   SearchCtrl.prototype = Object.create(superCtrl);
 
-  function SearchCtrl($scope, $location, searchFactory) {
+  function SearchCtrl($scope, $location, userService, searchFactory) {
     var ctrl = this;
 
     superCtrl.constructor.call(ctrl, $scope, $location, searchFactory.newContext());
 
     ctrl.init();
 
+	/* change default search result to 20 */
+	ctrl.mlSearch.options.pageLength = 20;
+	
     ctrl.setSnippet = function(type) {
       ctrl.mlSearch.setSnippet(type);
       ctrl.search();
     };
+
+    $scope.$watch(userService.currentUser, function(newValue) {
+      ctrl.currentUser = newValue;
+    });
   }
 }());

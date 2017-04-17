@@ -4,12 +4,12 @@
   angular.module('app.user')
     .controller('ProfileCtrl', ProfileCtrl);
 
-  ProfileCtrl.$inject = ['$scope', '$state', 'MLRest', 'userService', 'ngToast', '$rootScope'];
+  ProfileCtrl.$inject = ['$scope', '$state', 'MLRest', 'userService', 'ngToast'];
 
-  function ProfileCtrl($scope, $state, mlRest, userService, toast, $rootScope) {
+  function ProfileCtrl($scope, $state, mlRest, userService, toast) {
     var ctrl = this;
     angular.extend(ctrl, {
-      user: checkUser(userService.currentUser()),
+      user: null,
       newEmail: '',
       addEmail: addEmail,
       removeEmail: removeEmail,
@@ -17,23 +17,18 @@
     });
 
     function addEmail() {
-      if (ctrl.user) {
-        if (!ctrl.newEmail || hasEmailInputError()) {
-          return;
-        }
-        ctrl.user.profile = ctrl.user.profile || {};
-        if (!ctrl.user.profile.emails) {
-          ctrl.user.profile.emails = [];
-        }
-        ctrl.user.profile.emails.push(ctrl.newEmail.trim());
-        ctrl.newEmail = '';
+      if (!ctrl.newEmail || hasEmailInputError()) {
+        return;
       }
+      if (!ctrl.user.emails) {
+        ctrl.user.emails = [];
+      }
+      ctrl.user.emails.push(ctrl.newEmail.trim());
+      ctrl.newEmail = '';
     }
 
     function removeEmail(index) {
-      if (ctrl.user.profile && ctrl.user.profile.emails) {
-        ctrl.user.profile.emails.splice(index, 1);
-      }
+      ctrl.user.emails.splice(index, 1);
     }
 
     function hasEmailInputError() {
@@ -46,40 +41,33 @@
     }
 
     function submit(form) {
-      if (form.$valid && ctrl.user.profile) {
+      if (form.$valid) {
         addEmail();
 
-        if (ctrl.user.profile.emails) {
-          _.pull(ctrl.user.profile.emails, '');
+        if (ctrl.user.emails) {
+          _.pull(ctrl.user.emails, '');
         }
 
         mlRest.updateDocument({
-          user: ctrl.user.profile
+          user: {
+            'fullname': ctrl.user.fullname,
+            'emails': ctrl.user.emails
+          }
         }, {
           format: 'json',
-          uri: '/api/users/' + ctrl.user.username + '.json'
+          uri: '/api/users/' + ctrl.user.name + '.json'
+          // TODO: add read/update permissions here like this:
+          // 'perm:sample-role': 'read',
+          // 'perm:sample-role': 'update'
         }).then(function(data) {
-          $rootScope.$broadcast('loginService:profile-changed');
           toast.success('Submitted');
-          $state.go('root.landing');
-        }, function(response) {
-          toast.danger(response.data);
+          $state.go('root');
         });
       }
     }
 
     $scope.$watch(userService.currentUser, function(newValue) {
-      ctrl.user = checkUser(newValue);
+      ctrl.user = newValue;
     });
-
-    function checkUser(newValue) {
-      var user = angular.copy(newValue);
-      if (user && user.profile && user.profile.emails) {
-        if (!angular.isArray(user.profile.emails)) {
-          user.profile.emails = [user.profile.emails];
-        }
-      }
-      return user;
-    }
   }
 }());

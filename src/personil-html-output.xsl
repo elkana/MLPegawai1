@@ -9,7 +9,7 @@
 				<xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_1)))"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri('/personil/foto/profile_no_image.png'))"/>
+				<xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri('/personil/foto/profile_no_image.jpg'))"/>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
@@ -20,7 +20,7 @@
 				<xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_2)))"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri('/personil/foto/profile_no_image.png'))"/>
+				<xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri('/personil/foto/profile_no_image.jpg'))"/>
 			</xsl:otherwise>
 		</xsl:choose>	
 	</xsl:variable>

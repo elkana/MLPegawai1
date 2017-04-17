@@ -4,8 +4,8 @@
   angular.module('app.user')
     .factory('userService', UserService);
 
-  UserService.$inject = ['$rootScope', '$q', 'loginService'];
-  function UserService($rootScope, $q, loginService) {
+  UserService.$inject = ['$rootScope', 'loginService'];
+  function UserService($rootScope, loginService) {
     var _currentUser = null;
 
     function currentUser() {
@@ -14,7 +14,7 @@
 
     function getUser() {
       if (_currentUser) {
-        return $q.resolve(_currentUser);
+        return _currentUser;
       }
 
       return loginService.getAuthenticatedStatus().then(currentUser);
@@ -27,11 +27,22 @@
         return null;
       }
 
-      // Copy all initially
-      _currentUser = angular.copy(data);
+      _currentUser = {
+        name: data.username,
+      };
 
-      // Password property should not exist, delete anyhow just to be sure
-      delete _currentUser.password;
+      if ( data.profile ) {
+        _currentUser.hasProfile = true;
+        _currentUser.fullname = data.profile.fullname;
+
+        if ( _.isArray(data.profile.emails) ) {
+          _currentUser.emails = data.profile.emails;
+        }
+        else if (data.profile.emails) {
+          // wrap single value in array, needed for repeater
+          _currentUser.emails = [data.profile.emails];
+        }
+      }
 
       return _currentUser;
     }

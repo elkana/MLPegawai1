@@ -1,0 +1,356 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+}
+
+/* TABLE */
+
+.headerTop {
+	background-color: #006600;
+	width: 1287px;
+	height: 40px;
+	margin: auto;
+	color: #ffffff;
+	line-height: 40px;
+}
+
+.headerTop h1 {
+	text-align: center;
+}
+
+.biodata {
+	width: 1287px;
+	margin: auto;
+	background-color: #f6f6f6;
+}
+
+.biodata table td {
+	height: 16px;
+}
+
+.biodata table img {
+	height: 240px;
+	margin: 10px 20px;
+}
+
+.biodata table .tableImage {
+	width: 260px;
+}
+
+.biodata table .tableInfo {
+	width: 240px;
+}
+
+.biodata table .tableColon {
+	width: 10px;
+}
+
+.biodata table .tableValue {
+	width: 400px;
+}
+
+/* ACCORDION */
+
+.accordion {
+    -webkit-box-shadow: 0px 75px 35px -55px rgba(10, 30, 65, 0.4);
+    -moz-box-shadow: 0px 75px 35px -55px rgba(10, 30, 65, 0.4);
+    box-shadow: 0px 75px 35px -55px rgba(10, 30, 65, 0.4);
+    /* font-family: Arial, Helvetica, sans-serif; */
+    border-color: #505050;
+    border-style: solid;
+    border-width: 0px;
+    /* border-radius: 8px; */
+    margin: 0 auto;
+    height: 300px;
+    width: 1287px;
+}
+
+.accordion > ul > li,
+.accordion-title,
+.accordion-content,
+.accordion-separator {
+    float: left;
+	box-sizing: content-box;
+}
+
+.accordion > ul > li {
+    background-color: #777777;
+    margin-right: -1000px;
+    margin-bottom: -0px;
+}
+
+.accordion-select:checked ~ .accordion-separator {
+    margin-right: 1000px;
+    margin-bottom: 0px;
+}
+
+.accordion-title,
+.accordion-select {
+    background-color: #4d4d4d;
+    color: #dddddd;
+    width: 40px;
+    height: 300px;
+    font-size: 16px;
+}
+
+.accordion-title span {
+    margin-bottom: 20px; 
+    margin-left: 20px;
+}
+
+.accordion-select:hover ~ .accordion-title,
+.accordion-select:checked ~ .accordion-title {
+    background-color: #006600;
+}
+
+.accordion-title span  {	
+    transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -ms-writing-mode: lr-bt;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    margin-left: 0px;
+    line-height: 40px;
+}
+
+.accordion-content {
+    background-color: #6e6e6e;
+    color: #f5f2f0;
+    height: 260px;
+    width: 920px;
+    padding: 20px 40px;
+}
+
+.accordion-title,
+.accordion-select:checked ~ .accordion-content {
+    margin-right: 1px;
+    margin-bottom: 1px;
+}
+
+/* Do not change following properties, they aren't 
+generated automatically and are common for each slider. */
+.accordion {
+    overflow: hidden;
+}
+
+.accordion > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 101%;
+}
+
+.accordion > ul > li,
+.accordion-title {
+    position: relative;
+}
+
+.accordion-select {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+.accordion-title span {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.accordion-content {
+    position: relative;
+    overflow: auto;
+}
+
+.accordion-separator {
+    transition: margin 0.3s ease 0.1s;
+    -o-transition: margin 0.3s ease 0.1s;
+    -moz-transition: margin 0.3s ease 0.1s;
+    -webkit-transition: margin 0.3s ease 0.1s;
+}
+
+/* CONTENT */
+
+.tableWidth1 {
+	width: 900px;
+}
+
+.tableWidth2 {
+	width: 900px;
+}
+
+.accordion-content table tr {
+	height: 40px;
+}
+
+.accordion th {
+	border-bottom: 1px solid #999999;
+}
+
+.accordion td {
+	border-bottom: 1px solid #999999;
+}
+
+/* GENERAL */
+
+h1 {
+	font-size: 20px;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+
+/* IMAGE SWITCHER */
+
+p#cf7_controls {
+  text-align:center;
+}
+#cf7_controls span {
+  padding-right:2em;
+  cursor:pointer;
+}
+#cf7 {
+  position:relative;
+  height:281px;
+  width:450px;
+  margin:0 auto 10px;
+}
+#cf7 img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity:0;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+}
+
+#cf7 img.opaque {
+  opacity:1;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=1);
+}
+
+
+/* MAIN TABLE */
+
+* {
+	margin:0;
+	padding:0;
+	font-family: 'Lato', sans-serif;
+	font-size:14px;
+}
+
+.container{
+	margin:auto;
+	/*background-color:#f6f6f6;*/
+	
+}
+.title {
+	/*text-align:center;*/
+	font-size:28px;
+	padding:15px 30px;
+	
+}
+
+.header {
+	font-size:20px;
+	padding:10px 30px;
+	line-height:20px;
+}
+
+.headerfield {
+	margin-right:100px;
+}
+/*
+input[type=text] {
+	width: 420px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 12px;
+	background-color: white;
+	background-image: url('searchicon.png');
+	background-position: 10px 10px; 
+	background-repeat: no-repeat;
+	padding: 3px 8px;
+}
+*/
+.button {
+	background-color: #006600;
+	border: none;
+	color: white;
+	padding: 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0px 5px;
+	cursor: pointer;
+}
+
+.overflowhidden{
+	overflow:hidden;
+}
+
+.floatleft{
+	float:left;
+}
+
+.floatright{
+	float:right;
+	width:500px;
+}
+
+.headertable{
+	background-color:gray;
+	color:white;
+}
+
+th {
+	padding:5px;
+}
+
+td{
+	border-bottom: 1px solid #ddd;
+	font-size:12px;
+	/*color:#555;*/
+	padding:10px 0;
+}
+
+.centering {
+	text-align:center;
+}
+
+a {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+
+
+/* OVERRIDE */
+h3, .h3{
+	font-size: 18px;
+}
+
+.content .container {
+    padding-top: 0px;
+}

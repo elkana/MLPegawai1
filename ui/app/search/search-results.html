@@ -1,13 +1,29 @@
-<div ng-repeat="result in results track by $index" class="result">
-  <h4>
-    <a ui-sref="root.view({uri: result.uri})">{{ result.label || result.uri }}</a>
-  </h4>
+<div class="container">	
+	<table>
+        <tr class="headertable">
+            <th width="350" scope="col">NAMA<br>TMP, TGL LAHIR</th>
+            <th width="160" scope="col">NOPEG<br>NIP</th>
+            <th width="160" scope="col">PANGKAT KORPS<br>ANGKATAN KORPS</th>
+			<th width="160" scope="col">KODE JABATAN<br>ESELON JABATAN</th>
+        </tr>
+		 
+		<tr ng-repeat="result in results">
+			<td><a ui-sref="root.view({uri: result.uri})">{{ result.nama }} {{ result.gelar }}</a><br>{{result.tempat_lahir}}, {{result.tgl_lahir}}</td>
+			<td>{{result.nopeg}}<br>{{result.nip}}</td>
+			<td>{{result.pangkat_corps}}<br>{{result.angkatan_korps}}</td>
+			<td>{{result.kode_jabatan}}<br>{{result.eselon_jabatan}}</td>
+		</tr>
+	</table>
+</div>
+	
+  <!--
   <div class="matches">
-    <div class="match" ng-repeat="match in result.matches track by $index">
+    <div class="match" ng-repeat="match in result.matches">
       <em ng-repeat="text in match['match-text'] track by $index">
         <span ng-class="{ highlight: !!text.highlight }">{{ text.highlight || text }}</span>
       </em>
     </div>
   </div>
-  <hr>
-</div>
+	-->
+  
+
