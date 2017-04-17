@@ -1,0 +1,12 @@
+import
+
+-input_file_path
+data/personil_kemhan_xml.zip
+
+-input_compressed
+
+-output_collections
+personil
+
+-output_uri_replace
+".*\.zip,'/personil'"

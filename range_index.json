@@ -1,0 +1,48 @@
+{
+
+   	"range-path-index": [
+   	{
+   		"scalar-type": "string",
+		"path-expression": "/personil_kemhan/agama",
+		"collation": "http://marklogic.com/collation/codepoint",
+   		"range-value-positions": false,
+   		"invalid-values": "reject"
+   	},
+   	{
+   		"scalar-type": "string",
+		"path-expression": "/personil_kemhan/satker",
+		"collation": "http://marklogic.com/collation/codepoint",
+   		"range-value-positions": false,
+   		"invalid-values": "reject"
+   	},	
+   	{
+   		"scalar-type": "string",
+		"path-expression": "/personil_kemhan/jenis_kelamin",
+		"collation": "http://marklogic.com/collation/codepoint",
+   		"range-value-positions": false,
+   		"invalid-values": "reject"
+   	},
+   	{
+   		"scalar-type": "string",
+		"path-expression": "/personil_kemhan/kategori_pangkat",
+		"collation": "http://marklogic.com/collation/codepoint",
+   		"range-value-positions": false,
+   		"invalid-values": "reject"
+   	},
+   	{
+   		"scalar-type": "string",
+		"path-expression": "/personil_kemhan/eselon_jabatan",
+		"collation": "http://marklogic.com/collation/codepoint",
+   		"range-value-positions": false,
+   		"invalid-values": "reject"
+   	},
+   	{
+   		"scalar-type": "date",
+		"path-expression": "/personil_kemhan/tgl_lahir",
+		"collation": "http://marklogic.com/collation/codepoint",
+   		"range-value-positions": false,
+   		"invalid-values": "reject"
+   	}
+   	]
+
+}

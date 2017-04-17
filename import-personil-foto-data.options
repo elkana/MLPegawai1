@@ -1,0 +1,15 @@
+import
+
+-input_file_path
+data/personil_kemhan_foto.zip
+
+-input_compressed
+
+-document_type 
+BINARY
+
+-output_collections
+personil_foto
+
+-output_uri_replace
+".*\.zip,'/personil/foto'"
