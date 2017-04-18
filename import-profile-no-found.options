@@ -1,0 +1,13 @@
+import
+
+-input_file_path
+data/profile_no_image.jpg
+
+-document_type 
+BINARY
+
+-output_collections
+personil_foto
+
+-output_uri_replace
+".*data,'/personil/foto'"
