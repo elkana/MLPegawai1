@@ -46,7 +46,7 @@
 		
 		<div class="biodata">
 		<br/>
-	    <table>
+	    <table class="table table-hover table-striped table-condensed">
 		    <tr>    
 			    <xsl:apply-templates select="personil_kemhan/file_foto_1" />
 			    <xsl:apply-templates select="personil_kemhan/nopeg" />
@@ -106,7 +106,8 @@
 		
 		</div>
 		
-	  
+	  <xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_1)))"/>
+
       <div class="accordion">
         <ul>
           <xsl:apply-templates select="personil_kemhan/riwayat_pangkat" />
@@ -174,7 +175,7 @@
           <span><xsl:value-of select="translate(translate(name(.),'_',' '), $smallcase, $uppercase)"/></span>
         </div>        
         <div class="accordion-content">
-          <table class="tableWidth1">       
+          <table class="tableWidth1">
             <xsl:for-each select="node()">
 			  <!-- Column Header -->
 			  <xsl:if test="position()=1">
