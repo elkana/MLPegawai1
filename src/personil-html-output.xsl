@@ -107,6 +107,8 @@
 		</div>
 		
 	  <xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_1)))"/>
+	  <xsl:value-of select="exists(doc(concat('/personil/',/personil_kemhan/file_foto_1)))"/>
+	  <xsl:value-of select="exists(doc(concat('/personil_kemhan/',/personil_kemhan/file_foto_1)))"/>
 
       <div class="accordion">
         <ul>
