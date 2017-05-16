@@ -10,3 +10,6 @@ personil
 
 -output_uri_replace
 ".*\.zip,'/personil'"
+
+-content_encoding
+ISO-8859-1
