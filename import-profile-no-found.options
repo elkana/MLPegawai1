@@ -1,7 +1,7 @@
 import
 
 -input_file_path
-data/profile_no_image.jpg
+content/profile_no_image.jpg
 
 -document_type 
 BINARY
@@ -10,4 +10,4 @@ BINARY
 personil_foto
 
 -output_uri_replace
-".*data,'/personil/foto'"
+".*content,'/personil/foto'"
