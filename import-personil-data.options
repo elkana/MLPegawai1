@@ -1,7 +1,7 @@
 import
 
 -input_file_path
-data/personil_kemhan_xml.zip
+content/personil_kemhan_xml.zip
 
 -input_compressed
 
@@ -10,3 +10,6 @@ personil
 
 -output_uri_replace
 ".*\.zip,'/personil'"
+
+-content_encoding
+ISO-8859-1

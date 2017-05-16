@@ -1,6 +1,7 @@
 node_modules
 bower_components
 coverage
+content
 ui/fonts
 deploy/local.properties
 local.json
@@ -12,4 +13,3 @@ local.ecosystem.json
 *.sublime-project
 *.sublime-workspace
 .tmp/
-data

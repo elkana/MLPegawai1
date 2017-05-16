@@ -45,8 +45,7 @@
 		</div>    		
 		
 		<div class="biodata">
-		<br/>
-	    <table class="table table-hover table-striped table-condensed">
+	    <table class="table table-hover table-striped table-condensed" style="margin-bottom: 0px">
 		    <tr>    
 			    <xsl:apply-templates select="personil_kemhan/file_foto_1" />
 			    <xsl:apply-templates select="personil_kemhan/nopeg" />
@@ -99,11 +98,6 @@
 				<xsl:apply-templates select="personil_kemhan/tmt_kemhan" />
 		    </tr> 			   	
 		</table>
-		
-		<br/>
-		<br/>
-		<br/>
-		
 		</div>
 		
 	  <xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_1)))"/>
