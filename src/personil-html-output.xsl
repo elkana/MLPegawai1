@@ -116,9 +116,6 @@
       </div>
 
 	  <br/>
-	  <br/>
-	  <br/>
-		
 	  </body>
 	  </html>
   </xsl:template>
