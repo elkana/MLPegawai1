@@ -128,7 +128,7 @@ label.arrows:hover { opacity: 1 }
 label.arrows:active { margin-top: -23px }
 
 input[type=radio]#button-1:checked~.arrows#arrow-2, input[type=radio]#button-2:checked~.arrows#arrow-3, input[type=radio]#button-3:checked~.arrows#arrow-4, input[type=radio]#button-4:checked~.arrows#arrow-5 {
-    right: -55px;
+    right: -5px;
     display: block;
 }
 
@@ -142,7 +142,7 @@ input[type=radio]#button-2:checked~.arrows#arrow-1, input[type=radio]#button-3:c
     transform: scaleX(-1);
 }
 
-input[type=radio]#button-2:checked~.arrows#arrow-1 { left: -19px }
+input[type=radio]#button-2:checked~.arrows#arrow-1 { left: 30px }
 
 input[type=radio]#button-3:checked~.arrows#arrow-2 { left: -37px }
 
