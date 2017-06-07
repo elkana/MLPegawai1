@@ -2,6 +2,7 @@ node_modules
 bower_components
 coverage
 content
+export
 ui/fonts
 deploy/local.properties
 local.json

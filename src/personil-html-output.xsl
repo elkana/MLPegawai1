@@ -100,7 +100,7 @@
 		</table>
 		</div>
 		
-	  <xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_1)))"/>
+     <span style="color:white"> <xsl:value-of select="concat('/v1/documents?uri=', encode-for-uri(concat('/personil/',/personil_kemhan/file_foto_1)))"/></span>
 
       <div class="accordion">
         <ul>

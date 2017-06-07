@@ -1,0 +1,13 @@
+import
+
+-input_file_path
+content/foto
+
+-document_type 
+BINARY
+
+-output_collections
+foto_personil
+
+-output_uri_replace
+".*content/foto,'/personil_kemhan/foto'"
